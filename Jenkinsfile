@@ -1,7 +1,7 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
                 sh 'cp .env.example .env'
                 sh 'composer update'
