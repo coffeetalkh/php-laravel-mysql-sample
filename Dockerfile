@@ -32,8 +32,11 @@ RUN a2enmod rewrite \
     && mkdir -p /app \
     && rm -fr /var/www/html \
     && ln -s /app/public /var/www/html
+    
+RUN wget https://getcomposer.org/composer.phar && \
+    mv composer.phar /usr/local/bin/composer
 
-WORKDIR /app
+WORKDIR /app/
 
 # 预先加载 Composer 包依赖，优化 Docker 构建镜像的速度
 COPY ./composer.json /app/
