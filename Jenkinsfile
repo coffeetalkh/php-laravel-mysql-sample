@@ -38,7 +38,7 @@ pipeline {
             }
         }
         stage('Clean-up') {
-            paralle {
+            parallel {
                 steps('Dangling Containers') {
                   sh 'docker ps -q -f status=exited | xargs --no-run-if-empty docker rm'
                 }
