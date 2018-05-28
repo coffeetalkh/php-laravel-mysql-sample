@@ -34,7 +34,8 @@ RUN a2enmod rewrite \
     && ln -s /app/public /var/www/html
     
 RUN wget https://getcomposer.org/composer.phar && \
-    mv composer.phar /usr/local/bin/composer
+    mv composer.phar /usr/local/bin/composer && \
+    chmod +x /usr/local/bin/composer
 
 WORKDIR /app/
 
