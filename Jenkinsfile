@@ -7,10 +7,10 @@ pipeline {
     }
     stages {
         stage('Build') {
-                sh 'cp .env.example .env'
-                echo 'Hello Mr/Ms ${NAME}'
-                sh 'composer update'
-                sh 'php artisan serv'
+            sh 'cp .env.example .env'
+            echo 'Hello Mr/Ms ${NAME}'
+            sh 'composer update'
+            sh 'php artisan serv'
         }
         stage('Test') {
             parallel {
@@ -37,5 +37,5 @@ pipeline {
                 echo 'Deploying....'
             }
         }
-        }
+    }
 }
