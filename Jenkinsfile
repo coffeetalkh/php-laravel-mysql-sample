@@ -39,14 +39,20 @@ pipeline {
         }
         stage('Clean-up') {
             parallel {
-                steps('Dangling Containers') {
-                  sh 'docker ps -q -f status=exited | xargs --no-run-if-empty docker rm'
+                stage('Dangling Containers') {
+                    steps {
+                        sh 'docker ps -q -f status=exited | xargs --no-run-if-empty docker rm'
+                    }
                 }
-                steps('Dangling Images') {
-                  sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
+                stage('Dangling Containers') {
+                    steps {
+                        sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
+                    }
                 }
-                steps('Dangling Volumes') {
-                  sh 'docker volume ls -qf dangling=true | xargs -r docker volume rm'
+                stage('Dangling Containers') {
+                    steps {
+                        sh 'docker volume ls -qf dangling=true | xargs -r docker volume rm'
+                    }
                 }
             } 
         }
