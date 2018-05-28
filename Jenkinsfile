@@ -11,13 +11,14 @@ pipeline {
                 echo 'Hello Mr/Ms ${NAME}'
                 sh 'composer update'
                 sh 'php artisan serv'
-         stage('Test') {
-             parallel {
-                 stage('Unit-Test'){
-                    steps {
-                        echo 'Unit Testing..'
-                        echo 'You can join with this ${ADJECTIVE} adjective.'
-                    }
+        }
+        stage('Test') {
+            parallel {
+                stage('Unit-Test'){
+                   steps {
+                       echo 'Unit Testing..'
+                       echo 'You can join with this ${ADJECTIVE} adjective.'
+                   }
                  }
                  stage('Smoke-test'){
                      steps {
@@ -29,7 +30,7 @@ pipeline {
                          echo 'Acceptance testing...'
                      }
                  }
-             }
+            }
         }
         stage('Deploy') {
             steps {
