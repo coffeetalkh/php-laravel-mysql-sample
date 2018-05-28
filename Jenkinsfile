@@ -1,9 +1,9 @@
 pipeline {
     agent { dockerfile true }
     parameters{
-        string(defaultValue: true, description: '', name: 'NAME')
-        string(defaultValue: true, description: '', name: 'ADJECTIVE')
-        string(defaultValue: true, description: '', name: 'PLURAL_NOUN')
+        string(defaultValue: 'test-name', description: '', name: 'NAME')
+        string(defaultValue: 'test-adjective', description: '', name: 'ADJECTIVE')
+        string(defaultValue: 'test-plural', description: '', name: 'PLURAL_NOUN')
     }
     stages {
         stage('Build') {
