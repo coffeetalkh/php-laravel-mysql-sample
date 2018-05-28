@@ -44,12 +44,12 @@ pipeline {
                         sh 'docker ps -q -f status=exited | xargs --no-run-if-empty docker rm'
                     }
                 }
-                stage('Dangling Containers') {
+                stage('Dangling Images') {
                     steps {
                         sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
                     }
                 }
-                stage('Dangling Containers') {
+                stage('Dangling Volumes') {
                     steps {
                         sh 'docker volume ls -qf dangling=true | xargs -r docker volume rm'
                     }
